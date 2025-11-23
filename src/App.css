@@ -1,0 +1,31 @@
+@import "tailwindcss";
+
+
+
+.mainNavbar {
+  display: flex;
+  background-color: tomato;
+  width: 100vw;
+}
+
+/* Responsive logo sizing (mobile-first) */
+.top-logo {
+  width: 5rem; /* default: <480px */
+  height: 2.5rem;
+}
+
+@media (min-width: 480px) {
+  /* 480 - 767 */
+  .top-logo {
+    width: 7rem;
+    height: 7em;
+  }
+}
+
+@media (min-width: 768px) {
+  /* 768+ */
+  .top-logo {
+    width: 10rem;
+    height: 10rem;
+  }
+}
