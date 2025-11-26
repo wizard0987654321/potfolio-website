@@ -1,31 +1,26 @@
 @import "tailwindcss";
 
-
+.navLetter {
+  color: #31473A;
+}
 
 .mainNavbar {
   display: flex;
-  background-color: tomato;
+  background-color: #EDF4F2;
   width: 100vw;
-}
-
-/* Responsive logo sizing (mobile-first) */
-.top-logo {
-  width: 5rem; /* default: <480px */
-  height: 2.5rem;
+  height: 3rem;
 }
 
 @media (min-width: 480px) {
-  /* 480 - 767 */
-  .top-logo {
-    width: 7rem;
-    height: 7em;
-  }
+
+  .mainNavbar {
+    height: 3.4rem;
+}
 }
 
 @media (min-width: 768px) {
-  /* 768+ */
-  .top-logo {
-    width: 10rem;
-    height: 10rem;
-  }
+
+  .mainNavbar {
+    height: 4rem;
+}
 }

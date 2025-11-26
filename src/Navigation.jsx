@@ -34,7 +34,7 @@ function AnimatedNavLink({ to, children }) {
             to={to}
             onMouseEnter={handleEnter}
             onMouseLeave={handleLeave}
-            className="px-3 py-2 rounded-md text-sm font-medium hover:bg-red/10 transition overflow-visible"
+            className="h-full text-[#31473A] flex items-center px-3 rounded-md text-sm font-medium hover:bg-white/10 transition overflow-visible"
         >
             {letters.map((ch, i) => (
                 <span key={i} className="nav-letter inline-block leading-none">
@@ -48,16 +48,16 @@ function AnimatedNavLink({ to, children }) {
 export default function Navigation() {
     return (
     <>
-        <div className="mainNavbar flex justify-between">
-            <img src={logo} alt="logo" className="" />
-            <nav className="">
-                <div className="">
-                    <div className="">
-                        <AnimatedNavLink to="/">Home</AnimatedNavLink>
-                        <AnimatedNavLink to="/about">About</AnimatedNavLink>
-                        <AnimatedNavLink to="/cv">CV</AnimatedNavLink>
-                        <AnimatedNavLink to="/contact">Contact</AnimatedNavLink>
-                    </div>
+        <div className="mainNavbar flex justify-between items-center px-4 w-full">
+            <Link to="/" className="h-full flex items-center">
+                <img src={logo} alt="logo" className="h-full w-auto object-contain" />
+            </Link>
+            <nav className="flex items-center px-2 rounded-lg text-white">
+                <div className="flex items-center space-x-3 h-full">
+                    <AnimatedNavLink to="/">Home</AnimatedNavLink>
+                    <AnimatedNavLink to="/about">About</AnimatedNavLink>
+                    <AnimatedNavLink to="/cv">CV</AnimatedNavLink>
+                    <AnimatedNavLink to="/contact">Contact</AnimatedNavLink>
                 </div>
             </nav>
         </div>

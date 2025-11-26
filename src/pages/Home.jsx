@@ -1,11 +1,14 @@
+import AnimatedWord from "./AnimatedWord";
 
 export default function Home() {
   return (
-    <main className="min-h-screen flex items-center justify-center">
-      <div className="text-center">
-        <h2>Home</h2>
-        <p>Welcome to the home page.</p>
-      </div>
+    <main className="min-h-screen flex flex-col items-center justify-start space-y-10">
+      <AnimatedWord text="Home" />
+
+      <p className="text-white">
+        Hi, Ich bin Givi, ein Entwickler mit Fokus auf moderne Web und Mobile
+        Technologien. Willkommen auf meiner Portfolio-Seite!
+      </p>
     </main>
-  )
+  );
 }
