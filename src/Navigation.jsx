@@ -53,11 +53,12 @@ export default function Navigation() {
                 <img src={logo} alt="logo" className="h-full w-auto object-contain" />
             </Link>
             <nav className="flex items-center px-2 rounded-lg text-white">
-                <div className="flex items-center space-x-3 h-full">
+                <div className="flex items-center space-x-1 h-full">
                     <AnimatedNavLink to="/">Home</AnimatedNavLink>
                     <AnimatedNavLink to="/about">About</AnimatedNavLink>
                     <AnimatedNavLink to="/cv">CV</AnimatedNavLink>
                     <AnimatedNavLink to="/contact">Contact</AnimatedNavLink>
+                    <AnimatedNavLink to="/projects">Projects</AnimatedNavLink>
                 </div>
             </nav>
         </div>
