@@ -9,6 +9,7 @@ import kotlinIcon from "../assets/kotlinIcon.svg";
 import figmaIcon from "../assets/figmaIcon.svg";
 import phpIcon from "../assets/phpIcon.svg";
 import pythonIcon from "../assets/pythonIcon.svg";
+import AnimatedWord from "./AnimatedWord.jsx";
 
 const mySkills = [
   { name: "HTML", level: "very good", icon: htmlIcon },
@@ -26,6 +27,7 @@ const mySkills = [
 export default function Skills() {
   return (
     <div className="flex flex-col items-center gap-4 p-10">
+      <AnimatedWord text="Skills" />
       {mySkills.map((skill, index) => (
         <SkillBar key={index} name={skill.name} level={skill.level} icon={skill.icon} />
       ))}

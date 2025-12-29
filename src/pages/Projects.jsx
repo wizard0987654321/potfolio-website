@@ -18,7 +18,7 @@ const myProjects = [
     description: "Ein minimalistischer Shop mit GSAP Animationen.",
     tech: ["React", "Tailwind", "GSAP"],
     github: "https://github.com/givi/shop",
-    live: "https://givi-shop.demo",
+    live: "https://etch-a-sketch-project12.netlify.app/",
   },
   {
     id: 3,
@@ -37,21 +37,21 @@ export default function Projects() {
   useEffect(() => {
     const ctx = gsap.context(() => {
       // fromTo ensures the animation starts at 0 and DEFINITELY ends at 1
-      gsap.fromTo(".project-card", 
-        { 
-          opacity: 0, 
-          y: 40 
-        }, 
-        { 
-          opacity: 1, 
-          y: 0, 
-          stagger: 0.2, 
-          duration: 0.8, 
-          ease: "power3.out" 
+      gsap.fromTo(".project-card",
+        {
+          opacity: 0,
+          y: 40
+        },
+        {
+          opacity: 1,
+          y: 0,
+          stagger: 0.2,
+          duration: 0.8,
+          ease: "power3.out"
         }
       );
     }, mainRef);
-    
+
     return () => ctx.revert();
   }, []);
 
@@ -87,7 +87,7 @@ export default function Projects() {
                 href={project.github}
                 target="_blank"
                 rel="noreferrer"
-                className="flex items-center justify-center gap-2 w-full py-3 rounded-xl border-2 border-[#31473A] text-[#31473A] font-bold hover:bg-[#31473A] hover:text-white transition-colors duration-300"
+                className="flex items-center justify-center gap-2 w-full py-3 rounded-xl border-2 border-[#31473A] text-[#31473A] font-bold transition-all duration-300 hover:bg-[#31473A] hover:!text-white"
               >
                 GitHub Repo
               </a>
@@ -98,7 +98,7 @@ export default function Projects() {
                   href={project.live}
                   target="_blank"
                   rel="noreferrer"
-                  className="flex items-center justify-center gap-2 w-full py-3 rounded-xl bg-[#31473A] text-white font-bold hover:bg-[#26382e] transition-colors shadow-lg shadow-[#31473A]/20"
+                  className="flex items-center justify-center gap-2 w-full py-3 border-2 border-[#31473A] rounded-xl bg-[#31473A] text-white font-bold hover:bg-white hover:text-[#31473A] transition-colors shadow-lg shadow-[#31473A]/20"
                 >
                   Live Demo
                 </a>
