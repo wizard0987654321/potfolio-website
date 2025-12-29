@@ -7,15 +7,21 @@ export default function Contact() {
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      // Staggered entrance animation for the cards
-      gsap.from(".contact-card", {
-        y: 60,
-        opacity: 0,
-        duration: 0.8,
-        stagger: 0.2,
-        ease: "power4.out",
-        delay: 0.2
-      });
+      // We use fromTo to ensure it ends at opacity: 1 and y: 0
+      gsap.fromTo(".contact-card", 
+        { 
+          y: 60, 
+          opacity: 0 
+        }, 
+        { 
+          y: 0, 
+          opacity: 1, 
+          duration: 0.8, 
+          stagger: 0.2, 
+          ease: "power4.out", 
+          delay: 0.2 
+        }
+      );
     }, containerRef);
 
     return () => ctx.revert();

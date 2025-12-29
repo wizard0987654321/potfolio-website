@@ -24,8 +24,7 @@ export default function ContactCard({ title, value, link, icon }) {
       ref={cardRef}
       onMouseEnter={onMouseEnter}
       onMouseLeave={onMouseLeave}
-      className="contact-card w-full md:w-80 p-8 rounded-2xl bg-[#31473A] text-white flex flex-col items-center text-center transition-all shadow-xl"
-    >
+      className="contact-card w-full md:w-80 p-8 rounded-2xl bg-[#31473A] text-white flex flex-col items-center text-center shadow-xl"    >
       <div ref={iconRef} className="mb-4 p-4 bg-white/10 rounded-full text-white">
         {icon}
       </div>
