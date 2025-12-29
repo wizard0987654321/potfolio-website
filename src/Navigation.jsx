@@ -34,7 +34,8 @@ function AnimatedNavLink({ to, children }) {
             to={to}
             onMouseEnter={handleEnter}
             onMouseLeave={handleLeave}
-            className="h-full text-[#31473A] flex items-center px-3 rounded-md text-sm font-medium hover:bg-white/10 transition overflow-visible"
+            className="h-full text-[#31473A] flex items-center px-3 rounded-md text-sm font-medium hover:bg-white/10 transition overflow-visible font-montserrat"
+            style={{ fontFamily: "Montserrat, sans-serif" }}
         >
             {letters.map((ch, i) => (
                 <span key={i} className="nav-letter inline-block leading-none">
@@ -42,29 +43,30 @@ function AnimatedNavLink({ to, children }) {
                 </span>
             ))}
         </Link>
+
     )
 }
 
 export default function Navigation() {
     return (
-    <>
-        <div className="mainNavbar flex justify-between items-center px-4 w-full">
-            <Link to="/" className="h-full flex items-center">
-                <img src={logo} alt="logo" className="h-full w-auto object-contain" />
-            </Link>
-            <nav className="flex items-center px-2 rounded-lg text-white">
-                <div className="flex items-center space-x-1 h-full">
-                    <AnimatedNavLink to="/">Home</AnimatedNavLink>
-                    <AnimatedNavLink to="/about">About</AnimatedNavLink>
-                    <AnimatedNavLink to="/cv">CV</AnimatedNavLink>
-                    <AnimatedNavLink to="/contact">Contact</AnimatedNavLink>
-                    <AnimatedNavLink to="/projects">Projects</AnimatedNavLink>
-                </div>
-            </nav>
-        </div>
+        <>
+            <div className="mainNavbar flex justify-between items-center px-4 w-full">
+                <Link to="/" className="h-full flex items-center">
+                    <img src={logo} alt="logo" className="h-full w-auto object-contain" />
+                </Link>
+                <nav className="flex items-center px-2 rounded-lg text-white">
+                    <div className="flex items-center space-x-1 h-full">
+                        <AnimatedNavLink to="/">Home</AnimatedNavLink>
+                        <AnimatedNavLink to="/about">About</AnimatedNavLink>
+                        <AnimatedNavLink to="/skills">Skills</AnimatedNavLink>
+                        <AnimatedNavLink to="/contact">Contact</AnimatedNavLink>
+                        <AnimatedNavLink to="/projects">Projects</AnimatedNavLink>
+                    </div>
+                </nav>
+            </div>
             <main className="p-6">
                 <Outlet />
             </main>
-    </>
+        </>
     );
 }

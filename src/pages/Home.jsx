@@ -1,9 +1,11 @@
 import AnimatedWord from "./AnimatedWord";
 import RotatingText from "./RotatingText";
+import GithubIcon from "../assets/githubIcon.svg";
+import GitlabIcon from "../assets/gitlabIcon.svg";
 
 export default function Home() {
   return (
-    <main className="min-h-screen flex flex-col items-center justify-center px-4">
+    <main className="min-h-screen flex flex-col items-center justify-start px-4">
       {/* Top Header Section */}
       <div className="mb-8">
         <AnimatedWord text="Home" />
@@ -17,12 +19,29 @@ export default function Home() {
         </h1>
         
         <p className="mt-6 text-lg md:text-xl text-white/70 font-light tracking-wide">
-          Willkommen auf meiner Portfolio-Seite!
+          Willkommen auf meiner Portfolio-Webseite!
         </p>
       </div>
 
-      {/* Decorative Detail */}
-      <div className="mt-12 w-1 h-20 bg-gradient-to-b from-[#31473A] to-transparent rounded-full opacity-50" />
+      {/* Social Links */}
+      <div className="mt-10 flex justify-center space-x-6">
+        <a
+          href="https://github.com/wizard0987654321"
+          target="_blank"
+          rel="https://github.com/"
+          className="inline-block w-1/12 hover:opacity-80 transition"
+        >
+          <img src={GithubIcon} alt="GitHub" />
+        </a>
+        <a
+          href="https://git.thm.de/gsbs28"
+          target="_blank"
+          rel="https://git.thm.de/"
+          className="inline-block w-1/12 hover:opacity-80 transition"
+        >
+          <img src={GitlabIcon} alt="GitLab" />
+        </a>
+      </div>
     </main>
   );
 }
