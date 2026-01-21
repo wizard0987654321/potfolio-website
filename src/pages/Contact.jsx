@@ -7,7 +7,7 @@ export default function Contact() {
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      // We use fromTo to ensure it ends at opacity: 1 and y: 0
+      // fromTo to ensure it ends at opacity: 1 and y: 0
       gsap.fromTo(".contact-card", 
         { 
           y: 60, 

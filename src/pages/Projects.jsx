@@ -6,27 +6,43 @@ import AnimatedWord from "./AnimatedWord";
 const myProjects = [
   {
     id: 1,
-    title: "Eco-Tracker App",
-    description: "Eine mobile Anwendung zur Verfolgung des CO2-Fußabdrucks.",
-    tech: ["Kotlin", "Firebase"],
-    github: "https://github.com/givi/eco-tracker",
-    live: null, // Not web-based
+    title: "codeChameleon",
+    description: "Eine web Anwendung um JS Grundlagen zu lernen, mit eigen erstellten Design, Übungen und Quizzen.",
+    tech: ["HTML", "CSS", "JS", "GSAP"],
+    github: "https://git.thm.de/gsbs28/frontend-development",
+    live: "https://hosting.iem.thm.de/fed/2025/t3/",
   },
   {
     id: 2,
-    title: "Premium E-Commerce",
-    description: "Ein minimalistischer Shop mit GSAP Animationen.",
-    tech: ["React", "Tailwind", "GSAP"],
-    github: "https://github.com/givi/shop",
+    title: "Etch-a-Sketch",
+    description: "Ein minimalistischer Spiel, Anfangsprojekt mit HTML, CSS und JavaScript.",
+    tech: ["HTML", "CSS", "JS"],
+    github: "https://github.com/wizard0987654321/Etch-a-Sketch-TOP",
     live: "https://etch-a-sketch-project12.netlify.app/",
   },
   {
     id: 3,
-    title: "Retro Space Game",
-    description: "Ein 2D Shooter Spiel entwickelt mit JavaScript Canvas.",
-    tech: ["JavaScript", "HTML5"],
-    github: "https://github.com/givi/space-game",
-    live: "https://givi-games.demo",
+    title: "Soundrush",
+    description: "Mobile Rythmus-Spiel mit eigenerstelltem Design und Animationen.",
+    tech: ["Kotlin", "Libgdx", "Figma"],
+    github: "https://git.thm.de/mib-mase-ws25/teama",
+    live: null,
+  },
+  {
+    id: 4,
+    title: "Table Configurator",
+    description: "Tisch Konfigurator Webanwendung mit Registrierung, Anmeldung, 3D-Vorschau und interaktiven Elementen.",
+    tech: ["React", "React-Three-fiber", "Tailwind CSS", "Express.js", "PostgresQL"],
+    github: "https://git.thm.de/asmh41/webframeworks",
+    live: null,
+  },
+  {
+    id: 5,
+    title: "Java Calculator",
+    description: "Ein einfacher Java Rechner mit GUI.",
+    tech: ["Java"],
+    github: "https://github.com/wizard0987654321/Calculator-Java",
+    live: null,
   }
 ];
 
@@ -70,9 +86,9 @@ export default function Projects() {
             key={project.id}
             className="project-card group bg-white p-8 rounded-3xl shadow-sm hover:shadow-2xl flex flex-col justify-between border border-transparent hover:border-[#31473A]/10"          >
             <div>
-              <div className="flex gap-2 mb-4">
+              <div className="flex flex-wrap gap-2 mb-4">
                 {project.tech.map(t => (
-                  <span key={t} className="text-[10px] uppercase tracking-widest px-2 py-1 bg-[#31473A]/10 text-[#31473A] rounded-md font-bold">
+                  <span key={t} className="text-[10px] uppercase tracking-widest px-2 py-1 bg-[#31473A]/10 text-[#31473A] rounded-md font-bold whitespace-nowrap">
                     {t}
                   </span>
                 ))}

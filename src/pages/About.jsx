@@ -3,17 +3,16 @@ import gsap from "gsap";
 import AnimatedWord from "./AnimatedWord";
 
 export default function About() {
-  const aboutData = [
-    "Entwickler",
-    "Kreativ",
-    "Problemlöser",
-    "Technik-Fan",
-    "Teamplayer",
-    "Visionär"
+  const milestones = [
+    { year: "2022", event: "Erste Zeilen Code" },
+    { year: "2023", event: "CS50 beendet" },
+    { year: "2023", event: "Studienbeginn THM" },
+    { year: "2024", event: "The Odin Project" },
+    { year: "2026", event: "Studienende THM" }
   ];
 
   const [currentIndex, setCurrentIndex] = useState(0);
-  const totalSteps = aboutData.length;
+  const totalSteps = milestones.length;
   const barRef = useRef(null);
   const milestoneRefs = useRef([]);
 
@@ -22,88 +21,97 @@ export default function About() {
   useEffect(() => {
     gsap.to(barRef.current, {
       width: `${progress}%`,
-      duration: 0.6,
-      ease: "power2.out",
+      duration: 0.8,
+      ease: "power3.out",
     });
 
     if (currentIndex > 0) {
       gsap.fromTo(
         milestoneRefs.current[currentIndex - 1],
-        { scale: 0, opacity: 0, y: 10 },
-        { scale: 1, opacity: 1, y: 0, duration: 0.5, ease: "back.out(1.7)" }
+        { scale: 0.8, opacity: 0, y: 10 },
+        { scale: 1, opacity: 1, y: 0, duration: 0.5, ease: "back.out(1.2)" }
       );
     }
   }, [currentIndex, progress]);
 
   return (
-    <main 
+    <main
       style={{ fontFamily: "'Montserrat', sans-serif" }}
-      className="min-h-screen w-full flex flex-col items-center justify-center text-[#31473A] overflow-hidden px-4"
+      className="min-h-screen w-full flex flex-col items-center justify-center text-[#31473A] px-6"
     >
-      <div className="mb-10 md:mb-20">
-        <AnimatedWord text="About Me" />
+      <div className="mb-24">
+        <AnimatedWord text="Mein Weg" />
       </div>
 
-      {/* CONTAINER: 
-          - On mobile (375px+), we use px-12 to give labels room at the edges.
-          - max-w-full on mobile, max-w-4xl on desktop.
-      */}
-      <div className="w-full max-w-4xl relative px-10 md:px-16">
+      <div className="w-full max-w-5xl relative">
         
-        {/* LABELS AREA */}
-        <div className="relative w-full h-28 md:h-24 mb-4">
-          {aboutData.map((item, i) => (
-            <div
-              key={i}
-              ref={(el) => (milestoneRefs.current[i] = el)}
-              className="absolute opacity-0"
-              style={{
-                left: `${((i + 1) / totalSteps) * 100}%`,
-                transform: "translateX(-50%)",
-                // STAGGER HEIGHT ON MOBILE: 
-                // Evens are higher than odds to prevent horizontal overlapping
-                bottom: window.innerWidth < 768 ? (i % 2 === 0 ? "0px" : "40px") : "0px"
-              }}
-            >
-              <div className="bg-[#31473A] text-white px-2 md:px-4 py-1.5 md:py-2 rounded-full text-[8px] md:text-xs font-black shadow-lg shadow-[#31473A]/20 whitespace-nowrap uppercase tracking-tighter border border-white/20">
-                {item}
+        {/* ZIG-ZAG TIMELINE CONTAINER */}
+        <div className="relative z-10 grid grid-cols-5 w-full h-48 items-end">
+          {milestones.map((item, i) => {
+            const isHigh = i % 2 === 0;
+
+            return (
+              <div key={i} className="flex flex-col items-center justify-end h-full relative">
+                <div 
+                  ref={(el) => (milestoneRefs.current[i] = el)}
+                  className="opacity-0 flex flex-col items-center w-full"
+                >
+                  {/* Info-Bubble */}
+                  <div className={`
+                    bg-[#31473A] text-white rounded-xl text-center shadow-lg border border-white/10 z-20 
+                    w-[110%] md:w-auto min-w-[85px] px-2 py-2 md:px-5 md:py-3
+                  `}>
+                    <div className="text-[9px] md:text-[10px] font-bold opacity-60 mb-1 tracking-tighter">
+                      {item.year}
+                    </div>
+                    <div className="text-[10px] md:text-xs font-black uppercase leading-tight tracking-tight">
+                      {item.event}
+                    </div>
+                  </div>
+
+                  {/* Verbindungslinie (Zick-Zack) */}
+                  <div className={`w-[1px] bg-[#31473A]/30 mt-2 mb-1 ${isHigh ? "h-20 md:h-28" : "h-6 md:h-8"}`} />
+                  
+                  {/* Ankerpunkt auf dem Balken */}
+                  <div className="w-2.5 h-2.5 bg-[#31473A] rounded-full border-2 border-white shadow-sm z-30" />
+                </div>
               </div>
-              {/* Responsive Connector Line */}
-              <div className={`w-[1px] bg-[#31473A]/30 mx-auto ${i % 2 !== 0 && window.innerWidth < 768 ? 'h-10' : 'h-4'}`} />
-            </div>
-          ))}
+            );
+          })}
         </div>
 
-        {/* PROGRESS BAR */}
-        <div className="relative w-full h-2.5 bg-[#31473A]/10 rounded-full border border-[#31473A]/10">
+        {/* BACKGROUND PROGRESS BAR */}
+        <div className="absolute left-0 right-0 bottom-[4px] w-full h-[3px] bg-[#31473A]/10 rounded-full">
           <div
             ref={barRef}
-            className="h-full bg-[#31473A] rounded-full shadow-[0_0_15px_rgba(49,71,58,0.3)]"
+            className="h-full bg-[#31473A] rounded-full shadow-[0_0_10px_rgba(49,71,58,0.2)]"
             style={{ width: "0%" }}
           />
-          
-          {/* Subtle Step Markers */}
-          <div className="absolute inset-0 flex justify-between pointer-events-none">
-            {[...Array(totalSteps + 1)].map((_, i) => (
-              <div key={i} className="w-[1px] h-full bg-[#31473A]/20" />
-            ))}
-          </div>
         </div>
       </div>
 
-      {/* BUTTON AREA */}
-      <div className="mt-16 h-12 flex items-center justify-center">
+      {/* MINIMALISTIC END AREA */}
+      <div className="mt-24 h-20 flex items-center justify-center">
         {currentIndex < totalSteps ? (
           <button
             onClick={() => setCurrentIndex(currentIndex + 1)}
-            className="px-8 md:px-12 py-3 border-2 border-[#31473A] text-[#31473A] font-black uppercase tracking-widest text-[10px] rounded-full hover:bg-[#31473A] hover:text-white transition-all duration-300 active:scale-95"
+            className="px-12 py-3 border-2 border-[#31473A] text-[#31473A] font-black uppercase tracking-[0.2em] text-[10px] rounded-full hover:bg-[#31473A] hover:text-white transition-all duration-500 active:scale-95 shadow-sm hover:shadow-md"
           >
             Weiter
           </button>
         ) : (
-          <p className="text-[10px] font-black uppercase tracking-[0.4em] opacity-40 animate-pulse">
-            Journey End
-          </p>
+          <div className="text-center animate-in fade-in zoom-in-95 duration-1000">
+            <h3 className="text-sm md:text-lg font-black uppercase tracking-[0.3em] text-[#31473A]">
+              Das ist erst der Anfang
+            </h3>
+            <div className="mt-2 flex items-center justify-center gap-4">
+              <div className="h-[1px] w-8 bg-[#31473A]/20" />
+              <span className="text-[10px] uppercase tracking-[0.5em] text-[#31473A]/40 font-bold">
+                Wird fortgesetzt
+              </span>
+              <div className="h-[1px] w-8 bg-[#31473A]/20" />
+            </div>
+          </div>
         )}
       </div>
     </main>
