@@ -52,6 +52,14 @@ const myProjects = [
     tech: ["Vue.js", "Tres.js", "Tailwind CSS", "Express.js", "PostgresQL","Pinia Store"],
     github: "https://github.com/wizard0987654321/3D-Vue-Table-Configurator",
     live: "https://3dtableconfiguratorvue.netlify.app/",
+  },
+  {
+    id: 7,
+    title: "3D Video Game",
+    description: "Ein 3D-Videospiel, erstellt mit Unity und C#.",
+    tech: ["Unity", "C#", "Maya"],
+    github: "https://dijkstra.iem.thm.de/mib-sep-ws25/teama",
+    live: "https://youtu.be/Sjui2ez5Yrg",
   }
 ];
 
