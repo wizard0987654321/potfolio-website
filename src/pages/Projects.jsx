@@ -31,19 +31,27 @@ const myProjects = [
   },
   {
     id: 4,
-    title: "Table Configurator",
-    description: "Tisch Konfigurator Webanwendung mit Registrierung, Anmeldung, 3D-Vorschau und interaktiven Elementen.",
-    tech: ["React", "React-Three-fiber", "Tailwind CSS", "Express.js", "PostgresQL"],
-    github: "https://git.thm.de/asmh41/webframeworks",
-    live: null,
-  },
-  {
-    id: 5,
     title: "Java Calculator",
     description: "Ein einfacher Java Rechner mit GUI.",
     tech: ["Java"],
     github: "https://github.com/wizard0987654321/Calculator-Java",
     live: null,
+  },
+  {
+    id: 5,
+    title: "3D React Tisch-Konfigurator",
+    description: "Ein 3D-Tischkonfigurator, erstellt mit React und Three.js.",
+    tech: ["React", "Three.js", "Tailwind CSS", "Express.js", "PostgresQL","Zustand"],
+    github: "https://github.com/wizard0987654321/3D-React-Table-Configurator",
+    live: "https://3dtableconfiguratorreact.netlify.app/",
+  },
+  {
+    id: 6,
+    title: "3D Vue Tisch-Konfigurator",
+    description: "Ein 3D-Tischkonfigurator, erstellt mit Vue und Tres.js.",
+    tech: ["Vue.js", "Tres.js", "Tailwind CSS", "Express.js", "PostgresQL","Pinia Store"],
+    github: "https://github.com/wizard0987654321/3D-Vue-Table-Configurator",
+    live: "https://3dtableconfiguratorvue.netlify.app/",
   }
 ];
 
