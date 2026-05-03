@@ -43,7 +43,7 @@ const myProjects = [
     description: "Mobile Rythmus-Spiel mit eigenerstelltem Design und Animationen.",
     tech: ["Kotlin", "Libgdx", "Figma"],
     github: "https://git.thm.de/mib-mase-ws25/teama",
-    live: "https://drive.google.com/file/d/13CzTQ1khmACJD4_01M8NxM_LEJc4h9aI/view?usp=sharing",
+    live: "https://drive.google.com/file/d/1JPQu2NkJc5m8NIWREbhaPTAQZaUqMdPn/view?usp=drivesdk",
   },
   {
     id: 6,
