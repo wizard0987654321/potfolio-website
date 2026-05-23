@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+import { useLayoutEffect, useRef } from "react";
 import { useOutletContext } from "react-router-dom";
 import gsap from "gsap";
 import AnimatedWord from "./AnimatedWord";
@@ -7,16 +7,16 @@ import AnimatedWord from "./AnimatedWord";
 const myProjects = [
   {
     id: 1,
-    title: "3D React Tisch-Konfigurator",
-    description: "Ein 3D-Tischkonfigurator, erstellt mit React und Three.js.",
+    title: "3D React Table Configurator",
+    description: "A 3D table configurator built with React and Three.js.",
     tech: ["React", "Three.js", "Tailwind CSS", "Express.js", "PostgresQL", "Zustand"],
     github: "https://github.com/wizard0987654321/3D-React-Table-Configurator",
     live: "https://3dtableconfiguratorreact.netlify.app/",
   },
   {
     id: 2,
-    title: "3D Vue Tisch-Konfigurator",
-    description: "Ein 3D-Tischkonfigurator, erstellt mit Vue und Tres.js.",
+    title: "3D Vue Table Configurator",
+    description: "A 3D table configurator built with Vue and Tres.js.",
     tech: ["Vue.js", "Tres.js", "Tailwind CSS", "Express.js", "PostgresQL", "Pinia Store"],
     github: "https://github.com/wizard0987654321/3D-Vue-Table-Configurator",
     live: "https://3dtableconfiguratorvue.netlify.app/",
@@ -24,7 +24,7 @@ const myProjects = [
   {
     id: 3,
     title: "3D Video Game",
-    description: "Ein 3D-Videospiel, erstellt mit Unity und C#.",
+    description: "3D Video Game, built with Unity and C#.",
     tech: ["Unity", "C#", "Maya"],
     github: "https://dijkstra.iem.thm.de/mib-sep-ws25/teama",
     live: "https://youtu.be/Sjui2ez5Yrg",
@@ -32,7 +32,7 @@ const myProjects = [
   {
     id: 4,
     title: "Etch-a-Sketch",
-    description: "Ein minimalistischer Spiel, Anfangsprojekt mit HTML, CSS und JavaScript.",
+    description: "A minimalist game, an initial project with HTML, CSS, and JavaScript.",
     tech: ["HTML", "CSS", "JS"],
     github: "https://github.com/wizard0987654321/Etch-a-Sketch-TOP",
     live: "https://etch-a-sketch-project12.netlify.app/",
@@ -40,7 +40,7 @@ const myProjects = [
   {
     id: 5,
     title: "Soundrush",
-    description: "Mobile Rythmus-Spiel mit eigenerstelltem Design und Animationen.",
+    description: "Mobile rhythm game with custom design and animations.",
     tech: ["Kotlin", "Libgdx", "Figma"],
     github: "https://git.thm.de/mib-mase-ws25/teama",
     live: "https://drive.google.com/file/d/1JPQu2NkJc5m8NIWREbhaPTAQZaUqMdPn/view?usp=drivesdk",
@@ -48,7 +48,7 @@ const myProjects = [
   {
     id: 6,
     title: "codeChameleon",
-    description: "Eine web Anwendung um JS Grundlagen zu lernen, mit eigen erstellten Design, Übungen und Quizzen.",
+    description: "A web application to learn JS basics, with custom design, exercises, and quizzes.",
     tech: ["HTML", "CSS", "JS", "GSAP"],
     github: "https://git.thm.de/gsbs28/frontend-development",
     live: "https://hosting.iem.thm.de/fed/2025/t3/",
@@ -56,7 +56,7 @@ const myProjects = [
   {
     id: 7,
     title: "Java Calculator",
-    description: "Ein einfacher Java Rechner mit GUI.",
+    description: "A simple Java calculator with GUI.",
     tech: ["Java"],
     github: "https://github.com/wizard0987654321/Calculator-Java",
     live: null,
@@ -67,25 +67,30 @@ export default function Projects() {
   const { isDarkMode } = useOutletContext();
   const mainRef = useRef(null);
 
-  // GSAP Entrance Animation
-  useEffect(() => {
+   // GSAP Entrance Animation
+  useLayoutEffect(() => {
     const ctx = gsap.context(() => {
       const cards = gsap.utils.toArray(".project-card");
       const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
       if (reduceMotion) {
-        gsap.set(cards, { clearProps: "transform" });
+        gsap.set(cards, { clearProps: "transform,opacity" });
         return;
       }
 
-      gsap.set(cards, { willChange: "transform" });
-      gsap.from(cards, {
-        y: 60,
-        duration: 0.6,
-        stagger: 0.06,
-        ease: "power2.out",
-        clearProps: "transform,willChange"
-      });
+      gsap.set(cards, { willChange: "transform,opacity" });
+      gsap.fromTo(
+        cards,
+        { opacity: 0, y: 40 },
+        {
+          opacity: 1,
+          y: 0,
+          stagger: 0.2,
+          duration: 0.8,
+          ease: "power3.out",
+          clearProps: "transform,opacity,willChange"
+        }
+      );
     }, mainRef);
 
     return () => ctx.revert();
