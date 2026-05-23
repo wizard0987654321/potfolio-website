@@ -70,20 +70,22 @@ export default function Projects() {
   // GSAP Entrance Animation
   useEffect(() => {
     const ctx = gsap.context(() => {
-      // fromTo ensures the animation starts at 0 and DEFINITELY ends at 1
-      gsap.fromTo(".project-card",
-        {
-          opacity: 0,
-          y: 40
-        },
-        {
-          opacity: 1,
-          y: 0,
-          stagger: 0.2,
-          duration: 0.8,
-          ease: "power3.out"
-        }
-      );
+      const cards = gsap.utils.toArray(".project-card");
+      const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+      if (reduceMotion) {
+        gsap.set(cards, { clearProps: "transform" });
+        return;
+      }
+
+      gsap.set(cards, { willChange: "transform" });
+      gsap.from(cards, {
+        y: 60,
+        duration: 0.6,
+        stagger: 0.06,
+        ease: "power2.out",
+        clearProps: "transform,willChange"
+      });
     }, mainRef);
 
     return () => ctx.revert();
@@ -102,7 +104,7 @@ export default function Projects() {
         {myProjects.map((project) => (
           <div
             key={project.id}
-            className={`project-card group p-8 rounded-3xl shadow-sm hover:shadow-2xl flex flex-col justify-between border transition-all duration-500 ${
+            className={`project-card group p-8 rounded-3xl shadow-sm hover:shadow-2xl flex flex-col justify-between border transition-colors transition-shadow duration-500 ${
               isDarkMode 
                 ? 'bg-slate-800/50 border-slate-700 hover:border-cyan-500/30 hover:shadow-cyan-500/5' 
                 : 'bg-white border-transparent hover:border-[#31473A]/10'
